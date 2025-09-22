@@ -1,0 +1,4828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=ZCOOL+QingKe+HuangYou&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            background-color: #f8f8f8;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Tambahkan di bagian CSS yang sudah ada */
+        .timeline-address {
+            margin-top: 12px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            padding-left: 5px;
+            border-left: 2px solid var(--iel-gold);
+        }
+
+        body.dark-mode .timeline-address {
+            color: #aaa;
+            border-left-color: var(--iel-gold);
+        }
+
+        /* Tambahkan sedikit spacing untuk timeline-description */
+        .timeline-description {
+            margin-bottom: 5px;
+        }
+      
+        /* Tambahkan di bagian CSS yang sudah ada */
+        .school-address {
+            margin-top: 15px;
+            font-weight: 500;
+            color: #555;
+            font-style: italic;
+        }
+
+        body.dark-mode .school-address {
+            color: #bbb;
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .column,
+        body.dark-mode .major-card,
+        body.dark-mode .hobby-item,
+        body.dark-mode .comic-panel,
+        body.dark-mode .teacher-card {
+            background-color: #2d2d2d;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .school-section,
+        body.dark-mode .teachers-section,
+        body.dark-mode .video-section,
+        body.dark-mode .hobbies-section {
+            background-color: #252525;
+        }
+        
+        body.dark-mode .majors-section {
+            background-color: #2d2d2d;
+        }
+        
+        body.dark-mode .profile-image-container {
+            background: linear-gradient(135deg, #4d4b4b 0%, #4d4b4b 50%, #4d4b4b 100%);
+            padding: 5px;
+            box-shadow: 0 0 20px rgba(157, 157, 157, 0.6);
+        }
+        
+        body.dark-mode .profile-image-container:hover .profile-image {
+            transform: scale(1.03) rotate(0);
+            filter: brightness(1.1);
+            box-shadow: 0 0 15px rgba(157, 157, 157, 0.6);
+        }
+        
+        body.dark-mode .profile-section {
+            background-color: #2d2d2d;
+        }
+        body.dark-mode .profile-info h3,
+        body.dark-mode .profile-info p {
+            color: #f0f0f0;
+        }
+        body.dark-mode .stat-item {
+            background-color: #3a3a3a;
+        }
+        body.dark-mode .stat-label {
+            color: #aaa;
+        }
+        body.dark-mode .sound-effect {
+            color: var(--iel-gold);
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* iel Theme Colors */
+        :root {
+            --iel-gold: #D4AF37;
+            --iel-purple: #6A4C93;
+            --iel-black: #212121;
+            --iel-white: #FFFFFF;
+            --iel-blue: #3498db;
+            --iel-red: #e74c3c;
+        }
+        
+        /* Animasi Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity, transform;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity, transform;
+        }
+        
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity, transform;
+        }
+        
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity, transform;
+        }
+        
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* iel Comic Style */
+        .comic-text {
+            font-family: 'Permanent Marker', cursive;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            color: var(--iel-black);
+        }
+        
+        /* Animated Background for Hero Section */
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+        }
+        
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(106, 76, 147, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 50%);
+            z-index: 0;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 4rem;
+            margin-bottom: 40px;
+            color: var(--iel-black);
+            line-height: 1.2;
+            position: relative;
+        }
+        
+        body.dark-mode .hero h1 {
+            color: var(--iel-white);
+        }
+        
+        /* Yellow underline for "Welcome to my world" */
+        .hero h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--iel-gold);
+            border-radius: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            color: #555;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        body.dark-mode .hero p {
+            color: #bbb;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--iel-black);
+            color: var(--iel-white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            opacity: 0;
+            animation: bounce 2s infinite, fadeIn 1s ease forwards;
+            animation-delay: 0.9s;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode header {
+            background-color: rgba(30, 30, 30, 0.95);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2rem;
+            color: var(--iel-black);
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        body.dark-mode .logo {
+            color: var(--iel-white);
+        }
+        
+        /* Comic Scratch Effect on Logo */
+        .logo:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q50,20 80,50 T20,50" fill="none" stroke="%23D4AF37" stroke-width="3" stroke-linecap="round"/></svg>');
+            background-size: contain;
+            opacity: 0.7;
+            transform: rotate(15deg);
+        }
+        
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--iel-black);
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .nav-links a {
+            color: var(--iel-white);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--iel-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--iel-black);
+            color: var(--iel-white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--iel-gold);
+            transform: scale(1.05);
+        }
+        
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--iel-black);
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            color: var(--iel-gold);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--iel-black);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        body.dark-mode .section-title {
+            color: var(--iel-white);
+        }
+        
+        .section-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        body.dark-mode .section-content p {
+            color: #bbb;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            background-color: var(--iel-white);
+            position: relative;
+        }
+        
+        .profile-layout {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .profile-image-container {
+            position: relative;
+            flex: 1.2;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border: 5px solid var(--iel-white);
+            transform: rotate(-2deg);
+            max-width: 500px;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .profile-image-container:hover .profile-image {
+            transform: scale(1.02) rotate(0);
+        }
+        
+        .profile-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .profile-info h3 {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--iel-black);
+            position: relative;
+        }
+        
+        body.dark-mode .profile-info h3 {
+            color: var(--iel-white);
+        }
+        
+        .profile-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        body.dark-mode .profile-info p {
+            color: #bbb;
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2rem;
+            color: var(--iel-gold);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Comic Sound Effect */
+        .sound-effect {
+            position: absolute;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.8rem;
+            color: var(--iel-gold);
+            text-shadow: 2px 2px 0 var(--iel-black);
+            transform: rotate(-12deg);
+            opacity: 0.7;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .profile-section .sound-effect {
+            top: 20px;
+            right: 20px;
+        }
+        
+        /* Two Columns */
+        .two-columns {
+            display: flex;
+            gap: 40px;
+            margin-top: 60px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .column {
+            flex: 1;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid transparent;
+            will-change: transform, box-shadow;
+        }
+        
+        .column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--iel-gold);
+        }
+        
+        /* Comic Thought Bubble */
+        .thought-bubble {
+            position: absolute;
+            top: -35px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--iel-white);
+            border-radius: 50%;
+            border: 3px solid var(--iel-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            color: var(--iel-black);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            will-change: opacity, transform;
+        }
+        
+        /* Mengarahkan bubble ke foto dengan ekor yang tepat */
+        .thought-bubble:before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 25px;
+            width: 15px;
+            height: 15px;
+            background-color: var(--iel-white);
+            border-radius: 50%;
+            border: 3px solid var(--iel-black);
+        }
+        
+        .thought-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            right: 12px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--iel-white);
+            border-radius: 50%;
+            border: 2px solid var(--iel-black);
+        }
+        
+        .column:hover .thought-bubble {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .column h3 {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--iel-black);
+            position: relative;
+        }
+        
+        body.dark-mode .column h3 {
+            color: var(--iel-white);
+        }
+        
+        /* Comic Exclamation Mark */
+        .column h3:after {
+            content: '!';
+            position: absolute;
+            top: -12px;
+            right: -15px;
+            font-family: 'Permanent Marker', cursive;
+            color: var(--iel-gold);
+            font-size: 1.5rem;
+        }
+        
+        .column-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            height: 200px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .column-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .column-image-container:hover .column-image {
+            transform: scale(1.05);
+        }
+        
+        .column p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+            text-align: left;
+        }
+        
+        body.dark-mode .column p {
+            color: #bbb;
+        }
+        
+        /* Hobbies Section */
+        .hobbies-section {
+            background-color: var(--iel-white);
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        body.dark-mode .hobbies-section {
+            background-color: #2d2d2d;
+        }
+        
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .hobby-item {
+            width: 220px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+            will-change: transform, box-shadow;
+        }
+        
+        body.dark-mode .hobby-item {
+            background-color: #3a3a3a;
+        }
+        
+        .hobby-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            border-color: var(--iel-gold);
+        }
+        
+        .hobby-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--iel-white);
+            background-color: var(--iel-purple);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform, background-color;
+        }
+        
+        .hobby-item:hover .hobby-icon {
+            background-color: var(--iel-gold);
+            transform: rotate(10deg);
+        }
+        
+        .hobby-title {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--iel-black);
+        }
+        
+        body.dark-mode .hobby-title {
+            color: var(--iel-white);
+        }
+        
+        .hobby-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        body.dark-mode .hobby-description {
+            color: #bbb;
+        }
+        
+        .hobby-level {
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        body.dark-mode .hobby-level {
+            background-color: #555;
+        }
+        
+        .hobby-progress {
+            height: 100%;
+            background-color: var(--iel-gold);
+            border-radius: 3px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: width;
+        }
+        
+        /* School Section - New Layout */
+        .school-section {
+            background-color: #f5f5f5;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body.dark-mode .school-section {
+            background-color: #252525;
+        }
+        
+        .info-title {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--iel-black);
+            position: relative;
+            display: inline-block;
+        }
+        
+        body.dark-mode .info-title {
+            color: var(--iel-white);
+        }
+        
+        .info-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--iel-gold);
+            border-radius: 2px;
+        }
+        
+        .info-layout {
+            display: flex;
+            align-items: stretch;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+        
+        .info-left {
+            flex: 1;
+            text-align: right;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-right {
+            flex: 1.5;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--iel-white);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform, box-shadow;
+        }
+        
+        .info-right:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+            min-height: 280px;
+        }
+        
+        .info-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 0;
+        }
+        
+        body.dark-mode .info-description {
+            color: #bbb;
+        }
+        
+        .info-hint {
+            font-size: 0.9rem;
+            color: var(--iel-gold);
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .info-hint:hover {
+            color: var(--iel-purple);
+            gap: 12px;
+        }
+        
+        /* Teachers Section - New Layout */
+        .teachers-section {
+            background-color: var(--iel-white);
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        body.dark-mode .teachers-section {
+            background-color: #252525;
+        }
+        
+        /* Majors Section */
+        .majors-section {
+            background-color: #f5f5f5;
+            position: relative;
+            padding: 80px 0 100px;
+        }
+        
+        body.dark-mode .majors-section {
+            background-color: #2d2d2d;
+        }
+        
+        .majors-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .major-row {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+        
+        .major-card {
+            width: 260px;
+            background-color: var(--iel-white);
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            border: 1px solid transparent;
+            will-change: transform, box-shadow, opacity;
+        }
+        
+        body.dark-mode .major-card {
+            background-color: #3a3a3a;
+        }
+        
+        /* Animation for cards - fade in from sides */
+        .major-row:first-child .major-card:first-child {
+            transform: translateX(-60px);
+        }
+        
+        .major-row:first-child .major-card:last-child {
+            transform: translateX(60px);
+        }
+        
+        .major-row:last-child .major-card:first-child {
+            transform: translateX(-60px);
+        }
+        
+        .major-row:last-child .major-card:last-child {
+            transform: translateX(60px);
+        }
+        
+        .major-card.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .major-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--iel-gold);
+        }
+        
+        .major-logo {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--iel-white);
+            font-weight: bold;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            background-color: var(--iel-purple);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+            will-change: transform, background-color;
+        }
+        
+        .major-card:hover .major-logo {
+            background-color: var(--iel-gold);
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        /* Comic Sparkle Effect */
+        .major-logo:after {
+            content: '✨';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity, transform;
+        }
+        
+        .major-card:hover .major-logo:after {
+            opacity: 1;
+            transform: rotate(15deg);
+        }
+        
+        .major-title {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--iel-black);
+            position: relative;
+        }
+        
+        body.dark-mode .major-title {
+            color: var(--iel-white);
+        }
+        
+        .major-title:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background-color: var(--iel-gold);
+            border-radius: 1px;
+        }
+        
+        .major-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        body.dark-mode .major-description {
+            color: #bbb;
+        }
+        
+        /* Gallery Section - Perbaikan Layout */
+        .gallery-section {
+            background-color: var(--iel-white);
+            position: relative;
+            padding: 100px 0;
+        }
+        
+        body.dark-mode .gallery-section {
+            background-color: #2d2d2d;
+        }
+        
+        .gallery-container {
+            display: flex; /* Ubah dari grid ke flexbox */
+            flex-wrap: nowrap; /* Mencegah wrapping */
+            gap: 20px;
+            margin-top: 50px;
+            overflow-x: auto; /* Tambahkan scroll horizontal */
+            padding-bottom: 20px; /* Ruang untuk scrollbar */
+            scroll-snap-type: x mandatory; /* Efek snap saat scroll */
+            scroll-behavior: smooth; /* Gulir halus */
+            -webkit-overflow-scrolling: touch; /* Scroll halus di iOS */
+            position: relative; /* Untuk overlay */
+        }
+        
+        /* Efek overlay gradient untuk menunjukkan ada lebih banyak konten */
+        .gallery-container::before,
+        .gallery-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            z-index: 2;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            will-change: opacity;
+        }
+        
+        .gallery-container::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+        }
+        
+        body.dark-mode .gallery-container::before {
+            background: linear-gradient(to right, rgba(45,45,45,1), rgba(45,45,45,0));
+        }
+        
+        .gallery-container::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+        }
+        
+        body.dark-mode .gallery-container::after {
+            background: linear-gradient(to left, rgba(45,45,45,1), rgba(45,45,45,0));
+        }
+        
+        /* Sembunyikan overlay jika tidak bisa scroll atau di ujung */
+        .gallery-container.no-scroll-left::before,
+        .gallery-container.no-scroll-right::after {
+            opacity: 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            height: 250px;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex: 0 0 auto; /* Mencegah shrink/stretch */
+            width: 250px; /* Lebar tetap untuk item */
+            scroll-snap-align: center; /* Snap effect saat scroll */
+            will-change: transform, opacity, box-shadow;
+            opacity: 0;
+            transform: scale(0.95) translateY(5px);
+            background-color: #fff; /* Tambahkan background putih untuk tema terang */
+        }
+        
+        body.dark-mode .gallery-item {
+            background-color: #2d2d2d; /* Background untuk tema gelap */
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            opacity: 1;
+        }
+        
+        body.dark-mode .gallery-item:hover {
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .gallery-item.active {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        body.dark-mode .gallery-item.active {
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(1);
+            will-change: transform;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1.05);
+        }
+        
+        .gallery-item.active img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity;
+        }
+        
+        .gallery-item:hover .gallery-overlay,
+        .gallery-item.active .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-title {
+            color: var(--iel-white);
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.2rem;
+            transform: translateY(10px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .gallery-item:hover .gallery-title,
+        .gallery-item.active .gallery-title {
+            transform: translateY(0);
+        }
+        
+        /* Custom scrollbar untuk galeri - Perbaikan */
+        .gallery-container::-webkit-scrollbar {
+            height: 10px; /* Tinggi scrollbar */
+        }
+        
+        .gallery-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        
+        body.dark-mode .gallery-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .gallery-container::-webkit-scrollbar-thumb {
+            background: var(--iel-gold);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            will-change: background;
+        }
+        
+        .gallery-container::-webkit-scrollbar-thumb:hover {
+            background: #b8941f;
+        }
+        
+        /* Video Section */
+        .video-section {
+            background-color: var(--iel-white);
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        body.dark-mode .video-section {
+            background-color: #252525;
+        }
+        
+        .video-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        
+        .play-button {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(5px);
+            will-change: transform, background-color;
+        }
+        
+        .play-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .play-button i {
+            color: var(--iel-white);
+            font-size: 1.8rem;
+            margin-left: 5px;
+        }
+        
+        /* Video Controls Styles */
+        .video-controls {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            color: var(--iel-gold);
+        }
+        
+        .video-progress-bar, .volume-bar {
+            flex: 1;
+            margin: 0 10px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #444;
+            outline: none;
+            border-radius: 2px;
+        }
+        
+        .video-progress-bar::-webkit-slider-thumb, .volume-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--iel-gold);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        
+        .volume-bar {
+            max-width: 100px;
+        }
+        
+        .video-caption {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+            color: var(--iel-black);
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        body.dark-mode .video-caption {
+            color: #f0f0f0;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            background-color: #f5f5f5;
+            position: relative;
+            padding: 100px 0;
+        }
+        
+        body.dark-mode .timeline-section {
+            background-color: #252525;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background-color: var(--iel-gold);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: opacity, transform;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 50px;
+            text-align: right;
+            transform: translateX(-30px);
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 50px;
+            transform: translateX(30px);
+        }
+        
+        .timeline-item.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-content {
+            background-color: var(--iel-white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform, box-shadow;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        body.dark-mode .timeline-content {
+            background-color: #3a3a3a;
+        }
+        
+        .timeline-content:before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--iel-gold);
+            border-radius: 50%;
+            border: 3px solid var(--iel-white);
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:before {
+            right: -8px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:before {
+            left: -8px;
+        }
+        
+        .timeline-date {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.1rem;
+            color: var(--iel-gold);
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--iel-black);
+        }
+        
+        body.dark-mode .timeline-title {
+            color: var(--iel-white);
+        }
+        
+        .timeline-description {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        body.dark-mode .timeline-description {
+            color: #bbb;
+        }
+        
+        /* Comic Panel Effect */
+        .comic-panel {
+            position: relative;
+            padding: 30px;
+            background-color: var(--iel-white);
+            border: 3px solid var(--iel-black);
+            box-shadow: 0 0 0 1px var(--iel-white), 0 0 0 4px var(--iel-black);
+            margin-bottom: 40px;
+            z-index: 1;
+            border-radius: 8px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .comic-panel:hover {
+            transform: translateY(-5px);
+        }
+        
+        body.dark-mode .comic-panel {
+            background-color: #3a3a3a;
+        }
+        
+        .comic-panel:before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 25px;
+            width: 35px;
+            height: 35px;
+            background-color: var(--iel-gold);
+            border: 3px solid var(--iel-black);
+            transform: rotate(45deg);
+        }
+        
+        /* Comic Speech Bubble */
+        .speech-bubble {
+            position: relative;
+            background-color: var(--iel-white);
+            border-radius: 20px;
+            border: 2px solid var(--iel-black);
+            padding: 20px;
+            margin: 30px 0;
+            font-family: 'Permanent Marker', cursive;
+            color: var(--iel-black);
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .speech-bubble:hover {
+            transform: translateY(-5px);
+        }
+        
+        body.dark-mode .speech-bubble {
+            background-color: #3a3a3a;
+            color: #f0f0f0;
+        }
+        
+        /* Mengarahkan bubble ke gambar sekolah */
+        .school-section .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: 40px;
+            border-width: 18px 18px 0;
+            border-style: solid;
+            border-color: var(--iel-white) transparent;
+        }
+        
+        body.dark-mode .school-section .speech-bubble:after {
+            border-color: #3a3a3a transparent;
+        }
+        
+        .school-section .speech-bubble:before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 36px;
+            border-width: 20px 20px 0;
+            border-style: solid;
+            border-color: var(--iel-black) transparent;
+        }
+        
+        /* Game Section - Baru */
+        .game-section {
+            background-color: #f5f5f5;
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        body.dark-mode .game-section {
+            background-color: #252525;
+        }
+        
+        .games-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .game-card {
+            width: 320px;
+            background-color: var(--iel-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 2px solid transparent;
+            will-change: transform, box-shadow;
+        }
+        
+        body.dark-mode .game-card {
+            background-color: #3a3a3a;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--iel-gold);
+        }
+        
+        .game-header {
+            background-color: var(--iel-purple);
+            color: var(--iel-white);
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .game-title {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .game-body {
+            padding: 20px;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Tic Tac Toe Game Styles */
+        .tic-tac-toe-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tic-tac-toe-cell {
+            width: 80px;
+            height: 80px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        body.dark-mode .tic-tac-toe-cell {
+            background-color: #4a4a4a;
+            color: var(--iel-white);
+        }
+        
+        .tic-tac-toe-cell:hover {
+            background-color: var(--iel-gold);
+            transform: scale(1.05);
+        }
+        
+        .tic-tac-toe-cell.x {
+            color: var(--iel-purple);
+        }
+        
+        .tic-tac-toe-cell.o {
+            color: var(--iel-blue);
+        }
+        
+        .game-status {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--iel-black);
+            text-align: center;
+        }
+        
+        body.dark-mode .game-status {
+            color: var(--iel-white);
+        }
+        
+        .game-reset {
+            background-color: var(--iel-gold);
+            color: var(--iel-black);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .game-reset:hover {
+            background-color: #b8941f;
+            transform: translateY(-3px);
+        }
+        
+        /* Memory Card Game Styles - PERBAIKAN */
+        .memory-game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+            perspective: 1000px; /* Tambahkan perspective di container */
+        }
+        
+        .memory-card {
+            width: 60px;
+            height: 60px;
+            background-color: var(--iel-purple);
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            transform: scale(1);
+            perspective: 1000px; /* Tambahkan perspective untuk efek 3D yang lebih baik */
+        }
+        
+        .memory-card.flip {
+            transform: rotateY(180deg);
+        }
+        
+        .memory-card:active {
+            transform: scale(0.95);
+            transition: transform 0.2s;
+        }
+        
+        .memory-card-front, .memory-card-back {
+            width: 100%;
+            height: 100%;
+            padding: 8px; /* Kurangi padding dari 10px menjadi 8px */
+            position: absolute;
+            border-radius: 8px;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem; /* Kurangi ukuran font dari 1.5rem menjadi 1.3rem */
+            box-sizing: border-box; /* Tambahkan box-sizing */
+            -webkit-backface-visibility: hidden; /* Untuk kompatibilitas Safari */
+        }
+        
+        .memory-card-front {
+            background-color: var(--iel-purple);
+            transform: rotateY(180deg);
+            z-index: 2; /* Tambahkan z-index untuk memastikan sisi depan di atas */
+        }
+        
+        .memory-card-back {
+            background-color: var(--iel-gold);
+            color: var(--iel-black);
+            z-index: 1; /* Tambahkan z-index untuk memastikan sisi belakang di bawah */
+        }
+        
+        .memory-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .memory-stat {
+            text-align: center;
+        }
+        
+        .memory-stat-value {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.5rem;
+            color: var(--iel-gold);
+        }
+        
+        .memory-stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        body.dark-mode .memory-stat-label {
+            color: #bbb;
+        }
+        
+        /* Word Guessing Game Styles */
+        .word-display {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
+            color: var(--iel-black);
+        }
+        
+        body.dark-mode .word-display {
+            color: var(--iel-white);
+        }
+        
+        .word-category {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        body.dark-mode .word-category {
+            color: #bbb;
+        }
+        
+        .word-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--iel-gold);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body.dark-mode .word-input {
+            background-color: #4a4a4a;
+            color: var(--iel-white);
+        }
+        
+        .word-guess-btn {
+            background-color: var(--iel-gold);
+            color: var(--iel-black);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .word-guess-btn:hover {
+            background-color: #b8941f;
+            transform: translateY(-3px);
+        }
+        
+        .word-hint {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        body.dark-mode .word-hint {
+            color: #bbb;
+        }
+        
+        .word-attempts {
+            margin-top: 15px;
+        }
+        
+        .word-attempt {
+            display: inline-block;
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body.dark-mode .word-attempt {
+            background-color: #4a4a4a;
+        }
+        
+        <!-- Typing Speed Test Styles - Perbaikan -->
+.typing-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: justify;
+    position: relative;
+}
+
+body.dark-mode .typing-text {
+    background-color: #4a4a4a;
+    color: var(--iel-white);
+}
+
+.typing-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--iel-blue);
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+body.dark-mode .typing-input {
+    background-color: #4a4a4a;
+    color: var(--iel-white);
+}
+
+.typing-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.typing-stat {
+    text-align: center;
+}
+
+.typing-stat-value {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 1.5rem;
+    color: var(--iel-blue);
+}
+
+.typing-stat-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body.dark-mode .typing-stat-label {
+    color: #bbb;
+}
+
+.typing-timer {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 2rem;
+    color: var(--iel-red);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.typing-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.typing-btn {
+    background-color: var(--iel-blue);
+    color: var(--iel-white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.typing-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+.typing-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.typing-results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    display: none;
+}
+
+body.dark-mode .typing-results {
+    background-color: #4a4a4a;
+}
+
+.typing-errors {
+    margin-top: 15px;
+}
+
+.typing-error-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+body.dark-mode .typing-error-item {
+    border-bottom-color: #555;
+}
+
+.typing-error-char {
+    color: var(--iel-red);
+    font-weight: bold;
+}
+
+.typing-error-position {
+    color: #666;
+}
+
+body.dark-mode .typing-error-position {
+    color: #bbb;
+}
+
+.typing-progress {
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+body.dark-mode .typing-progress {
+    background-color: #555;
+}
+
+.typing-progress-bar {
+    height: 100%;
+    background-color: var(--iel-blue);
+    border-radius: 3px;
+    width: 0;
+    transition: width 0.1s linear;
+}
+
+/* Typing Result Text - Baru */
+.typing-result-text {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+    display: none;
+}
+
+body.dark-mode .typing-result-text {
+    background-color: #4a4a4a;
+}
+
+.char-correct {
+    color: green;
+}
+
+.char-incorrect {
+    color: red;
+    text-decoration: underline;
+}
+
+.char-missing {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+        
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            background-color: var(--iel-black);
+            color: var(--iel-white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Comic Dots Pattern */
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(var(--iel-gold) 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        footer p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            font-size: 1rem;
+        }
+        
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+        
+        body.dark-mode .progress-indicator {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: var(--iel-gold);
+            transition: width 0.3s ease;
+            will-change: width;
+        }
+        
+        /* Comic Button Style */
+        .comic-btn {
+            background-color: var(--iel-gold);
+            color: var(--iel-black);
+            border: 2px solid var(--iel-black);
+            padding: 10px 18px;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 25px 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            box-shadow: 0 3px 0 var(--iel-black);
+            transform: translateY(0);
+            will-change: transform, box-shadow;
+        }
+        
+        .comic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 var(--iel-black);
+        }
+        
+        .comic-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 1px 0 var(--iel-black);
+        }
+        
+        .comic-btn i {
+            font-size: 1.2rem;
+        }
+        
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 20px;
+            overflow-y: auto;
+            will-change: opacity, visibility;
+        }
+        
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .popup-content {
+            background-color: var(--iel-white);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .popup-overlay.active .popup-content {
+            transform: scale(1);
+        }
+        
+        body.dark-mode .popup-content {
+            background-color: #2d2d2d;
+        }
+        
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 2px solid var(--iel-black);
+        }
+        
+        .popup-header h3 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--iel-black);
+        }
+        
+        body.dark-mode .popup-header h3 {
+            color: var(--iel-white);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--iel-black);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--iel-gold);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+        
+        .popup-body {
+            padding: 25px;
+        }
+        
+        .popup-body h4 {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 1.4rem;
+            margin: 20px 0 15px;
+            color: var(--iel-black);
+        }
+        
+        body.dark-mode .popup-body h4 {
+            color: var(--iel-white);
+        }
+        
+        .popup-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        body.dark-mode .popup-body p {
+            color: #bbb;
+        }
+        
+        .popup-body ul, .popup-body ol {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .popup-body li {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        body.dark-mode .popup-body li {
+            color: #bbb;
+        }
+        
+        .popup-footer {
+            margin-top: 30px;
+            position: relative;
+        }
+        
+        .popup-footer .sound-effect {
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            font-size: 2.2rem;
+        }
+        
+        /* Comic Burst Effect on Popup */
+        .popup-content:before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 45px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 L60,40 L90,40 L68,58 L78,88 L50,70 L22,88 L32,58 L10,40 L40,40 Z" fill="%23D4AF37"/></svg>');
+            background-size: contain;
+            z-index: 1;
+        }
+        
+        /* Image Popup Styles */
+        .image-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 20px;
+            will-change: opacity, visibility;
+        }
+        
+        .image-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .image-popup-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background-color: var(--iel-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .image-popup-overlay.active .image-popup-content {
+            transform: scale(1);
+        }
+        
+        .image-popup-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+        
+        .image-popup-image-container {
+            position: relative;
+            overflow: hidden;
+            max-height: 70vh;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-popup-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            object-fit: contain;
+            will-change: transform;
+        }
+        
+        .image-popup-text {
+            padding: 30px;
+            background-color: var(--iel-white);
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        
+        body.dark-mode .image-popup-text {
+            background-color: #2d2d2d;
+        }
+        
+        .image-popup-text h3 {
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--iel-black);
+        }
+        
+        body.dark-mode .image-popup-text h3 {
+            color: var(--iel-white);
+        }
+        
+        .image-popup-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        body.dark-mode .image-popup-text p {
+            color: #bbb;
+        }
+        
+        .close-image-popup {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform, background-color;
+        }
+        
+        .close-image-popup:hover {
+            background-color: var(--iel-gold);
+            color: var(--iel-black);
+            transform: rotate(90deg);
+        }
+        
+        /* Interactive Floating Action Button */
+        .fab-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+        
+        .fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--iel-gold);
+            color: var(--iel-black);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            will-change: transform, box-shadow;
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .fab-options {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            will-change: opacity, visibility, transform;
+        }
+        
+        .fab-options.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .fab-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--iel-white);
+            color: var(--iel-black);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            will-change: transform, box-shadow;
+        }
+        
+        body.dark-mode .fab-option {
+            background-color: #3a3a3a;
+            color: var(--iel-white);
+        }
+        
+        .fab-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Notification Toast */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--iel-black);
+            color: var(--iel-white);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            will-change: opacity, visibility, transform;
+            max-width: 90%;
+            text-align: center;
+        }
+        
+        .notification.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .notification.success {
+            background-color: #2ecc71;
+        }
+        
+        .notification.error {
+            background-color: #e74c3c;
+        }
+        
+        .notification.info {
+            background-color: #3498db;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .profile-layout {
+                flex-direction: column;
+            }
+            
+            .info-layout {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .info-left {
+                text-align: left;
+                padding-right: 0;
+                display: block;
+            }
+            
+            .info-right {
+                flex: 1;
+            }
+            
+            .major-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .major-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .two-columns {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .thought-bubble {
+                display: none;
+            }
+            
+            .hobbies-container {
+                gap: 20px;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+            
+            .timeline-content:before {
+                left: 20px !important;
+            }
+            
+            .video-controls {
+                flex-wrap: wrap;
+            }
+            
+            .video-progress-bar {
+                order: 3;
+                width: 100%;
+                margin: 10px 0;
+            }
+            
+            .popup-content {
+                max-width: 95%;
+            }
+            
+            .popup-header h3 {
+                font-size: 1.4rem;
+            }
+            
+            .popup-body {
+                padding: 15px;
+            }
+            
+            .popup-body h4 {
+                font-size: 1.2rem;
+            }
+            
+            .popup-body p, .popup-body li {
+                font-size: 0.95rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .image-popup-text {
+                padding: 20px;
+            }
+            
+            .image-popup-text h3 {
+                font-size: 1.5rem;
+            }
+            
+            .image-popup-image-container {
+                max-height: 50vh;
+            }
+            
+            .gallery-container {
+                flex-direction: row; /* Tetap horizontal di mobile */
+                gap: 15px; /* Kurangi gap di mobile */
+            }
+            
+            .gallery-item {
+                width: 200px; /* Lebar lebih kecil di mobile */
+                height: 200px; /* Tinggi lebih kecil di mobile */
+            }
+            
+            .games-container {
+                gap: 20px;
+            }
+            
+            .game-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .tic-tac-toe-cell {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .memory-card {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .word-display {
+                font-size: 1.5rem;
+                letter-spacing: 5px;
+            }
+            
+            .typing-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">MY Portofolio</div>
+                <div class="header-nav">
+                    <nav class="nav-links">
+                        <a href="#profile" class="nav-link">Tentang</a>
+                        <a href="#school" class="nav-link">Sekolah</a>
+                        <a href="#hobbies" class="nav-link">Hobi</a>
+                        <a href="#majors" class="nav-link">Jurusan</a>
+                        <a href="#gallery" class="nav-link">Galeri</a>
+                        <a href="#games" class="nav-link">Game</a>
+                    </nav>
+                    <div class="social-links">
+                        <a href="https://instagram.com/hrielkho" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="" title="FTP" id="ftp-link">
+                            <i class="fas fa-folder-open"></i>
+                        </a>
+                        <button class="dark-mode-toggle" id="dark-mode-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="comic-text" data-text="WELCOME TO MY WORLD">WELCOME TO MY WORLD</h1>
+            <p>Sebuah ruang sederhana namun penuh makna, tempat di mana ide dan kreativitas bertemu, tumbuh, dan diwujudkan menjadi Portofolio sederhana ini.</p>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Profile Section -->
+    <section class="profile-section" id="profile">
+        <div class="container">
+            <h2 class="section-title comic-text reveal" data-text="TENTANG SAYA">TENTANG SAYA</h2>
+            <div class="section-content">
+                <div class="profile-layout reveal">
+                    <div class="profile-image-container">
+                        <img src="profile.jpg" alt="Foto Profil" class="profile-image">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Fahriel Khoirunnadi</h3>
+                        <p>Saya adalah seorang siswa yang penuh semangat dan memiliki minat yang besar dalam teknologi dan kreativitas. Saya percaya bahwa dengan pendidikan yang tepat dan semangat yang tinggi, kita dapat mencapai apa pun yang kita impikan.</p>
+                        
+                        <!-- Tombol untuk popup TKJ -->
+                        <button id="tkj-info-btn" class="comic-btn">
+                            <i class="fas fa-info-circle"></i> Lebih Lanjut Tentang Saya 
+                        </button>
+                        
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">18</div>
+                                <div class="stat-label">Umur</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Kelas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">TKJ</div>
+                                <div class="stat-label">Jurusan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sound-effect reveal">POW!</div>
+                <div class="comic-panel reveal">
+                    <p>Saya memiliki minat dalam bidang teknologi, khususnya  desain grafis dan fotografi. Selain itu, saya juga aktif dalam kegiatan organisasi sekolah.</p>
+                </div>
+                
+                <div class="two-columns">
+                    <div class="column reveal-left">
+                        <div class="thought-bubble">!</div>
+                        <h3>Kelas XII TKJ</h3>
+                        <div class="column-image-container">
+                            <img src="kelas.jpg" alt="Anggota Kelas" class="column-image">
+                        </div>
+                        <p class="major-description" style="text-align:justify;">Bersama teman-teman sekelas, kami menjalani hari-hari penuh dengan pembelajaran dan tawa. Setiap hari adalah petualangan baru di mana kami saling mendukung untuk mencapai prestasi akademik terbaik.</p>
+                    </div>
+                    
+                    <div class="column reveal-right">
+                        <div class="thought-bubble">?</div>
+                        <h3>Organisasi Pramuka</h3>
+                        <div class="column-image-container">
+                            <img src="pramuka.JPG" alt="Anggota Pramuka" class="column-image">
+                        </div>
+                        <p class="major-description" style="text-align:justify;">Sebagai anggota pramuka, saya belajar banyak tentang kepemimpinan, kerjasama tim, dan keterampilan bertahan hidup. Kegiatan pramuka telah membentuk karakter saya menjadi lebih disiplin dan bertanggung jawab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Hobbies Section -->
+    <section class="hobbies-section" id="hobbies">
+        <div class="container">
+            <h2 class="section-title comic-text reveal" data-text="HOBI & MINAT SAYA">HOBI & MINAT SAYA</h2>
+            <div class="section-content">
+                <p class="reveal">Berikut adalah beberapa hobi dan minat yang saya geluti di waktu luang:</p>
+                
+                <div class="hobbies-container">
+                    <div class="hobby-item reveal">
+                        <div class="hobby-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="hobby-title">Membaca</h3>
+                        <p class="hobby-description">Saya suka membaca novel, komik, dan buku-buku semacamnya.</p>
+                        <div class="hobby-level">
+                            <div class="hobby-progress" data-level="90"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hobby-item reveal">
+                        <div class="hobby-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="hobby-title">Gaming</h3>
+                        <p class="hobby-description">Bermain game strategi dan RPG untuk melatih pikiran dan menghilangkan stres.</p>
+                        <div class="hobby-level">
+                            <div class="hobby-progress" data-level="85"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hobby-item reveal">
+                        <div class="hobby-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="hobby-title">Musik</h3>
+                        <p class="hobby-description">Bermain gitar dan mendengarkan berbagai genre musik untuk inspirasi.</p>
+                        <div class="hobby-level">
+                            <div class="hobby-progress" data-level="75"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hobby-item reveal">
+                        <div class="hobby-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 class="hobby-title">Fotografi</h3>
+                        <p class="hobby-description">Mengabadikan momen berharga melalui lensa kamera.</p>
+                        <div class="hobby-level">
+                            <div class="hobby-progress" data-level="70"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Timeline Section -->
+<section class="timeline-section">
+    <div class="container">
+        <h2 class="section-title comic-text reveal" data-text="PERJALANAN PENDIDIKAN">PERJALANAN PENDIDIKAN</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023 - Sekarang</div>
+                    <div class="timeline-title">SMK Bina Nusantara Semarang</div>
+                    <div class="timeline-description">
+                        Melanjutkan pendidikan di tingkat SMK dengan fokus pada pengembangan skill teknis dan non-teknis.
+                    </div>
+                    <!-- Paragraf alamat untuk SMK -->
+                    <div class="timeline-address">
+                        Jl. Kemantren Raya No.5, RT.02/RW.04, Wonosari, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50186
+                    </div>
+                    <div style="margin-top: 15px; display: flex; align-items: center; justify-content: center;">
+                        <a href="https://maps.google.com/?q=SMK+Bina+Nusantara+Semarang" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: var(--iel-gold); text-decoration: none; transition: all 0.3s ease;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_(2020).svg" alt="Google Maps" style="width: 24px; height: 24px;">
+                            <span style="font-family: 'ZCOOL QingKe HuangYou', cursive; font-size: 1rem; font-weight: 500;">Klik untuk melihat alamat</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020 - 2023</div>
+                    <div class="timeline-title">SMP Negeri 28 Semarang</div>
+                    <div class="timeline-description">
+                        Masa SMP di mana saya mulai mengembangkan minat dalam teknologi serta mengeksplor hal-hal positif yang menunjang keterampilan.
+                    </div>
+                    <!-- Paragraf alamat untuk SMP -->
+                    <div class="timeline-address">
+                        Jl. Kyai Gilang, Mangkang Kulon, Kec. Tugu, Kota Semarang, Jawa Tengah 50188
+                    </div>
+                    <div style="margin-top: 15px; display: flex; align-items: center; justify-content: center;">
+                        <a href="https://maps.google.com/?q=SMP+Negeri+28+Semarang" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: var(--iel-gold); text-decoration: none; transition: all 0.3s ease;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_(2020).svg" alt="Google Maps" style="width: 24px; height: 24px;">
+                            <span style="font-family: 'ZCOOL QingKe HuangYou', cursive; font-size: 1rem; font-weight: 500;">Klik untuk melihat alamat</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2013 - 2020</div>
+                    <div class="timeline-title">SDN Wonosari 02 Semarang</div>
+                    <div class="timeline-description">
+                        Masa dasar pendidikan formal di mana saya mulai menunjukkan minat dalam seni dan kreativitas.
+                    </div>
+                    <!-- Paragraf alamat untuk SD -->
+                    <div class="timeline-address">
+                        Jl. Raya Mangkang No.Km .16, Wonosari, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50186
+                    </div>
+                    <div style="margin-top: 15px; display: flex; align-items: center; justify-content: center;">
+                        <a href="https://maps.google.com/?q=SDN+Wonosari+02+Semarang" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: var(--iel-gold); text-decoration: none; transition: all 0.3s ease;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_(2020).svg" alt="Google Maps" style="width: 24px; height: 24px;">
+                            <span style="font-family: 'ZCOOL QingKe HuangYou', cursive; font-size: 1rem; font-weight: 500;">Klik untuk melihat alamat</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- School Section -->
+<section class="school-section" id="school">
+    <div class="container">
+        <h2 class="section-title comic-text reveal" data-text="SEKOLAH SAYA">SEKOLAH SAYA</h2>
+        <div class="section-content">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                <h3 class="info-title reveal" style="margin: 0; margin-right: 15px;">SMK Bina Nusantara Semarang</h3>
+                <a href="https://maps.google.com/?q=SMK+Bina+Nusantara+Semarang" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background-color: rgba(212, 175, 55, 0.2); border-radius: 50%; transition: all 0.3s ease;" title="Lihat di Google Maps">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_(2020).svg" alt="Google Maps" style="width: 20px; height: 20px;">
+                </a>
+            </div>
+            
+            <div class="info-layout">
+                <div class="info-left reveal-left">
+                    <p class="info-description">
+                        SMK Bina Nusantara Semarang adalah institusi pendidikan terkemuka yang memiliki komitmen tinggi terhadap pengembangan potensi siswa. Dengan fasilitas lengkap dan tenaga pendidik profesional, sekolah ini telah menghasilkan lulusan yang siap bersaing di dunia industri.
+                    </p>
+                    
+                    <!-- Paragraf alamat di halaman utama -->
+                    <p class="info-description school-address">
+                        Sekolah ini beralamat di Jl. Kemantren Raya No.5, RT.02/RW.04, Wonosari, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50186
+                    </p>
+                    
+                    <div class="info-hint" data-title="SMK Bina Nusantara Semarang" data-description="SMK Bina Nusantara Semarang adalah institusi pendidikan terkemuka yang memiliki komitmen tinggi terhadap pengembangan potensi siswa. Dengan fasilitas lengkap dan tenaga pendidik profesional, sekolah ini telah menghasilkan lulusan yang siap bersaing di dunia industri." data-address="Sekolah ini beralamat di Jl. Kemantren Raya No.5, RT.02/RW.04, Wonosari, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50186">
+                        <i class="fas fa-mouse-pointer"></i> Klik foto untuk melihat detail
+                    </div>
+                </div>
+                <div class="info-right reveal-right" data-title="SMK Bina Nusantara Semarang" data-description="SMK Bina Nusantara Semarang adalah institusi pendidikan terkemuka yang memiliki komitmen tinggi terhadap pengembangan potensi siswa. Dengan fasilitas lengkap dan tenaga pendidik profesional, sekolah ini telah menghasilkan lulusan yang siap bersaing di dunia industri." data-address="Sekolah ini beralamat di Jl. Kemantren Raya No.5, RT.02/RW.04, Wonosari, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50186">
+                    <img src="gedung.jpg" alt="Gedung Sekolah" class="info-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!-- Teachers Section -->
+    <section class="teachers-section">
+        <div class="container">
+            <h2 class="section-title comic-text reveal" data-text="GURU-GURU SAYA">GURU-GURU SAYA</h2>
+            <div class="section-content">
+                <h3 class="info-title reveal">Guru-Guru SMK Bina Nusantara</h3>
+                <div class="info-layout">
+                    <div class="info-left reveal-left">
+                        <p class="info-description">Guru di SMK Bina Nusantara berjumlah kurang lebih 25 orang, yang terdiri dari tenaga pendidik profesional dan berdedikasi tinggi. Mereka tidak hanya mengajar materi pelajaran, tetapi juga membimbing dan menginspirasi siswa untuk mencapai potensi terbaik mereka.</p>
+                        <div class="info-hint" data-title="Guru-Guru SMK Bina Nusantara" data-description="Guru di SMK Bina Nusantara berjumlah kurang lebih 25 orang, yang terdiri dari tenaga pendidik profesional dan berdedikasi tinggi. Mereka tidak hanya mengajar materi pelajaran, tetapi juga membimbing dan menginspirasi siswa untuk mencapai potensi terbaik mereka.">
+                            <i class="fas fa-mouse-pointer"></i> Klik foto untuk melihat detail
+                        </div>
+                    </div>
+                    <div class="info-right reveal-right" data-title="Guru-Guru SMK Bina Nusantara" data-description="Guru di SMK Bina Nusantara berjumlah kurang lebih 25 orang, yang terdiri dari tenaga pendidik profesional dan berdedikasi tinggi. Mereka tidak hanya mengajar materi pelajaran, tetapi juga membimbing dan menginspirasi siswa untuk mencapai potensi terbaik mereka.">
+                        <img src="guru.JPG" alt="Foto Bersama Guru" class="info-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Majors Section -->
+    <section class="majors-section" id="majors">
+        <div class="container">
+            <h2 class="section-title comic-text reveal" data-text="JURUSAN DI SEKOLAH SAYA">JURUSAN DI SEKOLAH SAYA</h2>
+            <div class="majors-container">
+                <div class="major-row">
+                    <div class="major-card reveal-scale">
+                        <div class="major-logo">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="major-title">Teknik Komputer Jaringan</h3>
+                        <p class="major-description">Jurusan ini mempelajari tentang instalasi, konfigurasi, dan perawatan jaringan komputer serta sistem komputer.</p>
+                    </div>
+                    
+                    <div class="major-card reveal-scale">
+                        <div class="major-logo">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="major-title">Akuntansi dan Keuangan</h3>
+                        <p class="major-description">Jurusan ini mempelajari tentang pencatatan, pengelolaan, dan analisis keuangan dalam suatu lembaga atau perusahaan.</p>
+                    </div>
+                </div>
+                
+                <div class="major-row">
+                    <div class="major-card reveal-scale">
+                        <div class="major-logo">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <h3 class="major-title">Teknik Bisnis Sepeda Motor</h3>
+                        <p class="major-description">Jurusan ini mempelajari tentang teknik perawatan, perbaikan, dan bisnis sepeda motor.</p>
+                    </div>
+                    
+                    <div class="major-card reveal-scale">
+                        <div class="major-logo">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3 class="major-title">Desain Produksi Busana</h3>
+                        <p class="major-description">Jurusan ini mempelajari tentang desain, pembuatan pola, dan produksi busana.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section - PERBAIKAN -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title comic-text reveal" data-text="GALERI KEGIATAN">GALERI KEGIATAN</h2>
+            <div class="section-content">
+                <p class="reveal">Scroll horizontal untuk melihat semua foto:</p>
+                
+                <div class="gallery-container" id="gallery-container">
+                    <div class="gallery-item" data-title="Kegiatan PTA" data-description="Kegiatan Perkemahan Tahunan yang diikuti oleh siswa kelas 10 SMK Bina Nusantara. Kegiatan ini bertujuan untuk melatih kemandirian, kerjasama tim, dan keterampilan survival di alam terbuka.">
+                        <img src="kegiatan1.jpg" alt="Kegiatan 1">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Kegiatan PTA</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="Event Sekolah" data-description="Event tahunan sekolah yang menampilkan berbagai bakat siswa dalam bidang seni, olahraga, dan akademik. Acara ini menjadi ajang untuk menunjukkan prestasi dan kreativitas siswa.">
+                        <img src="kegiatan2.jpg" alt="Kegiatan 2">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Event Sekolah</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="Tos-Tos Event" data-description="Foto itu merupakan foto yang diambil pada saat TOS-TOS yaitu sebuah brand makanan mengadakan event penampilan seni di sekolah saya.">
+                        <img src="kegiatan3.jpg" alt="Kegiatan 3">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Tos-Tos Event</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="Dengan Teman" data-description="Momen berharga bersama teman-teman di berbagai kegiatan sekolah. Persahabatan yang terjalin selama di sekolah akan menjadi kenangan indah yang tak terlupakan.">
+                        <img src="friends.jpg" alt="Kegiatan 4">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Dengan Teman</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="Kegiatan Lab" data-description="Praktikum di laboratorium komputer merupakan kegiatan rutin jurusan TKJ. Di sini kami belajar tentang jaringan, perakitan komputer, dan troubleshooting berbagai masalah teknis.">
+                        <img src="kegiatan5.JPG" alt="Kegiatan 5">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Kegiatan Lab</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="Batik Days" data-description="Foto itu merupakan foto yang diambil saat peringatan HARI BATIK NASIONAL di SMK Bina Nusantara Semarang.">
+                        <img src="kegiatan6.JPG" alt="Kegiatan 6">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Batik Days</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="Pramuka Rutin" data-description="Ekstrakurikuler Pramuka memberikan kami wadah untuk mengekspresikan kreativitas serta membangun sikap mandiri dan kepemimpinan pada diri senderi.">
+                        <img src="kegiatan7.JPG" alt="Kegiatan 7">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Pramuka Rutin</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title comic-text reveal" data-text="VIDEO DOKUMENTASI">VIDEO DOKUMENTASI</h2>
+            <div class="section-content">
+                <p class="reveal">Berikut adalah salah satu video dokumentasi kegiatan di jurusan TKJ:</p>
+                
+                <div class="video-container reveal">
+                    <div class="video-wrapper">
+                        <video id="myVideo" loop>
+                            <source src="dokumentas.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-controls">
+                        <button id="playPauseBtn" class="control-btn"><i class="fas fa-play"></i></button>
+                        <input type="range" id="video-progress-bar" class="video-progress-bar" value="0" min="0" max="100">
+                        <input type="range" id="volumeBar" class="volume-bar" value="100" min="0" max="100">
+                        <button id="muteBtn" class="control-btn"><i class="fas fa-volume-up"></i></button>
+                        <button id="fullscreenBtn" class="control-btn"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+                
+                <p class="video-caption reveal">Itu tadi cuplikan kegiatan seru di jurusan TKJ. Di sini bukan cuma duduk manis di depan komputer, tapi juga belajar bareng, diskusi, oprek jaringan, sampai ketawa-ketawa bareng teman sekelas. Jadi, setiap hari ada aja pengalaman baru yang bikin belajar teknologi makin asik dan nggak ngebosenin.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Game Section - Baru -->
+    <section class="game-section" id="games">
+        <div class="container">
+            <h2 class="section-title comic-text reveal" data-text="GAME INTERAKTIF">GAME INTERAKTIF</h2>
+            <div class="section-content">
+                <p class="reveal">Nikmati beberapa game interaktif yang saya buat khusus untuk pengunjung portofolio ini:</p>
+                
+                <div class="games-container">
+                    <!-- Tic Tac Toe Game -->
+                    <div class="game-card reveal-scale">
+                        <div class="game-header">
+                            <h3 class="game-title">Tic Tac Toe</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="game-status" id="tic-tac-toe-status">Giliran: X</div>
+                            <div class="tic-tac-toe-board" id="tic-tac-toe-board">
+                                <button class="tic-tac-toe-cell" data-index="0"></button>
+                                <button class="tic-tac-toe-cell" data-index="1"></button>
+                                <button class="tic-tac-toe-cell" data-index="2"></button>
+                                <button class="tic-tac-toe-cell" data-index="3"></button>
+                                <button class="tic-tac-toe-cell" data-index="4"></button>
+                                <button class="tic-tac-toe-cell" data-index="5"></button>
+                                <button class="tic-tac-toe-cell" data-index="6"></button>
+                                <button class="tic-tac-toe-cell" data-index="7"></button>
+                                <button class="tic-tac-toe-cell" data-index="8"></button>
+                            </div>
+                            <button class="game-reset" id="tic-tac-toe-reset">Reset Game</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Memory Card Game -->
+                    <div class="game-card reveal-scale">
+                        <div class="game-header">
+                            <h3 class="game-title">Memory Card</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="memory-stats">
+                                <div class="memory-stat">
+                                    <div class="memory-stat-value" id="memory-moves">0</div>
+                                    <div class="memory-stat-label">Moves</div>
+                                </div>
+                                <div class="memory-stat">
+                                    <div class="memory-stat-value" id="memory-matches">0</div>
+                                    <div class="memory-stat-label">Matches</div>
+                                </div>
+                            </div>
+                            <div class="memory-game-board" id="memory-game-board">
+                                <!-- Memory cards will be generated by JavaScript -->
+                            </div>
+                            <button class="game-reset" id="memory-reset">Reset Game</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Word Guessing Game -->
+                    <div class="game-card reveal-scale">
+                        <div class="game-header">
+                            <h3 class="game-title">Tebak Kata</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="word-category" id="word-category">Kategori: Teknologi</div>
+                            <div class="word-display" id="word-display">_ _ _ _ _</div>
+                            <input type="text" class="word-input" id="word-input" placeholder="Tebak kata...">
+                            <button class="word-guess-btn" id="word-guess-btn">Tebak</button>
+                            <div class="word-hint" id="word-hint">Hint: Perangkat untuk mengakses internet</div>
+                            <div class="word-attempts" id="word-attempts">
+                                <!-- Previous attempts will be shown here -->
+                            </div>
+                            <button class="game-reset" id="word-reset">Kata Baru</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Typing Speed Test - Dipindahkan ke sini -->
+                    <div class="game-card reveal-scale">
+                        <div class="game-header">
+                            <h3 class="game-title">Tes Kecepatan Mengetik</h3>
+                        </div>
+                        <div class="game-body">
+                            <div class="typing-timer" id="typing-timer">60</div>
+                            <div class="typing-progress">
+                                <div class="typing-progress-bar" id="typing-progress-bar"></div>
+                            </div>
+                            <div class="typing-text" id="typing-text">
+                                Teknologi informasi telah menjadi bagian integral dari kehidupan modern. Dari smartphone hingga komputer canggih, teknologi terus berkembang pesat. Sebagai siswa jurusan TKJ, saya belajar tentang jaringan komputer, perakitan, dan troubleshooting.
+                            </div>
+                            <div class="typing-controls">
+                                <button class="typing-btn" id="typing-start-btn">Mulai Tes</button>
+                                <button class="typing-btn" id="typing-reset-btn" disabled>Reset</button>
+                            </div>
+                            <input type="text" class="typing-input" id="typing-input" placeholder="Klik 'Mulai Tes' dan ketik teks di atas..." disabled>
+                            <div class="typing-stats">
+                                <div class="typing-stat">
+                                    <div class="typing-stat-value" id="typing-wpm">0</div>
+                                    <div class="typing-stat-label">WPM</div>
+                                </div>
+                                <div class="typing-stat">
+                                    <div class="typing-stat-value" id="typing-accuracy">100%</div>
+                                    <div class="typing-stat-label">Akurasi</div>
+                                </div>
+                                <div class="typing-stat">
+                                    <div class="typing-stat-value" id="typing-characters">0</div>
+                                    <div class="typing-stat-label">Karakter</div>
+                                </div>
+                            </div>
+                            <div class="typing-results" id="typing-results">
+                                <h4>Hasil Tes</h4>
+                                <div class="typing-errors" id="typing-errors">
+                                    <!-- Kesalahan akan ditampilkan di sini -->
+                                </div>
+                            </div>
+                            <!-- Teks berwarna untuk hasil tes -->
+                            <div class="typing-result-text" id="typing-result-text"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="ftp://192.168.1.5" title="FTP Server" id="ftp-link" style="color:white; text-decoration:none;">
+                FTP 192.168.1.5
+            </a>
+        </p>
+        <div class="container">
+            <p>Terima kasih telah mengunjungi Portofolio saya. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan terkait saya!</p>
+            <p>&copy; 2025 Fahriel Khoirunnadi. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Popup untuk Informasi TKJ -->
+    <div id="tkj-popup" class="popup-overlay">
+        <div class="popup-content comic-panel">
+            <div class="popup-header">
+                <h3 class="comic-text" data-text="TENTANG JURUSAN SAYA">TENTANG JURUSAN SAYA</h3>
+                <button id="close-popup" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-body">
+                <h4>Di SMK ini Saya Memilih Jurusan TKJ</h4>
+                <p><b>Jadi Apa Itu Teknik Komputer Jaringan (TKJ)?</b> Teknik Komputer Jaringan adalah jurusan yang mempelajari tentang instalasi, konfigurasi, dan perawatan jaringan komputer serta sistem komputer. Di jurusan ini, siswa diajarkan untuk menjadi ahli dalam:</p>
+                <ul>
+                    <li>Perakitan komputer dan troubleshooting</li>
+                    <li>Instalasi dan konfigurasi sistem operasi</li>
+                    <li>Manajemen jaringan LAN</li>
+                    <li>Keamanan jaringan dan sistem</li>
+                </ul>
+                
+                <h4>Kenapa Saya Memilih Jurusan TKJ di SMK Bina Nusantara?</h4>
+                <p>Saya memilih jurusan TKJ di SMK Bina Nusantara karena beberapa alasan kuat:</p>
+                <ol>
+                    <li><strong>Minat Pribadi:</strong> Memang sejak SMP saya mulai memperliatkan ketertarikan mengenai sebuah teknologi.</li>
+                    <li><strong>Peluang Karir:</strong> Di era digital saat ini, kebutuhan akan tenaga ahli di bidang teknologi memanglah sangat dibutuhkan, apalagi dominasi dunia kerja sekarang sudah berbasis teknologi.</li>
+                    <li><strong>Perkembangan Zaman:</strong> Saya sendiri merasa memilih jurusan TKJ agar pemahaman saya terhadap komputer dan semacamnya tidak tertinggal oleh zaman.</li>
+                    <li><strong>Pembelajaran Praktik:</strong> Praktik di jurusan TKJ menurut saya menyenangkan karena saya dapat tau bagaimana bentuk komponen komponen di dalam komputer ataupun di produk semacamnya.</li>
+                </ol>
+                
+                <div class="popup-footer">
+                    <p class="sound-effect">BAM!</p>
+                    <p>Dengan memilih jurusan TKJ, saya berharap dapat menjadi paham di bidang teknologi informasi dan siap menghadapi tantangan di era digital ini.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Image Popup -->
+    <div id="image-popup" class="image-popup-overlay">
+        <div class="image-popup-content">
+            <button class="close-image-popup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="image-popup-container">
+                <div class="image-popup-image-container">
+                    <img src="" alt="" class="image-popup-image">
+                </div>
+                <div class="image-popup-text">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <div class="fab-options" id="fab-options">
+            <button class="fab-option" id="fab-top" title="Kembali ke Atas">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            <button class="fab-option" id="fab-theme" title="Ganti Tema">
+                <i class="fas fa-palette"></i>
+            </button>
+            <button class="fab-option" id="fab-share" title="Bagikan">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+        <button class="fab" id="fab-toggle">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+    
+    <!-- Notification Toast -->
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        // Video Autoplay on Scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoSection = document.querySelector('.video-section');
+            const video = document.getElementById('myVideo');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const playButton = document.querySelector('.play-button');
+            let videoPlayed = false;
+            
+            // Fungsi untuk memutar video dengan suara
+            function playVideoWithSound() {
+                if (!videoPlayed) {
+                    // Coba putar video dengan suara
+                    const playPromise = video.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(_ => {
+                            // Video berhasil diputar
+                            video.muted = false;
+                            video.volume = 1.0;
+                            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                            playButton.style.display = 'none';
+                            videoPlayed = true;
+                            
+                            // Update volume bar
+                            document.getElementById('volumeBar').value = 100;
+                        })
+                        .catch(error => {
+                            // Autoplay dengan suara dicegah oleh browser
+                            console.log("Autoplay with sound prevented:", error);
+                            
+                            // Coba putar video tanpa suara
+                            video.muted = true;
+                            video.play().then(() => {
+                                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                                playButton.style.display = 'none';
+                                videoPlayed = true;
+                                
+                                // Tampilkan notifikasi untuk mengaktifkan suara
+                                showSoundNotification();
+                            });
+                        });
+                    }
+                }
+            }
+            
+            // Fungsi untuk menampilkan notifikasi pengaktifan suara
+            function showSoundNotification() {
+                // Buat elemen notifikasi
+                const notification = document.createElement('div');
+                notification.className = 'sound-notification';
+                notification.innerHTML = `
+                    <div class="notification-content">
+                        <i class="fas fa-volume-up"></i>
+                        <p>Klik ikon ini untuk mengakttifkan suara</p>
+                        <button id="enable-sound-btn">Aktifkan Suara</button>
+                    </div>
+                `;
+                
+                // Tambahkan style untuk notifikasi
+                const style = document.createElement('style');
+                style.textContent = `
+                    .sound-notification {
+                        position: fixed;
+                        bottom: 30px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background-color: rgba(0, 0, 0, 0.8);
+                        color: white;
+                        padding: 15px 25px;
+                        border-radius: 10px;
+                        z-index: 1002;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                        animation: slideUp 0.5s ease;
+                        max-width: 90%;
+                        text-align: center;
+                    }
+                    
+                    @keyframes slideUp {
+                        from {
+                            transform: translateX(-50%) translateY(100px);
+                            opacity: 0;
+                        }
+                        to {
+                            transform: translateX(-50%) translateY(0);
+                            opacity: 1;
+                        }
+                    }
+                    
+                    .notification-content {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                    }
+                    
+                    .notification-content i {
+                        font-size: 1.5rem;
+                        color: var(--iel-gold);
+                    }
+                    
+                    .notification-content p {
+                        margin: 0;
+                        font-size: 1rem;
+                    }
+                    
+                    #enable-sound-btn {
+                        background-color: var(--iel-gold);
+                        color: var(--iel-black);
+                        border: none;
+                        padding: 8px 15px;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    #enable-sound-btn:hover {
+                        background-color: #b8941f;
+                    }
+                `;
+                
+                document.head.appendChild(style);
+                document.body.appendChild(notification);
+                
+                // Tambahkan event listener untuk tombol aktifkan suara
+                document.getElementById('enable-sound-btn').addEventListener('click', function() {
+                    video.muted = false;
+                    video.volume = 1.0;
+                    document.getElementById('volumeBar').value = 100;
+                    document.getElementById('muteBtn').innerHTML = '<i class="fas fa-volume-up"></i>';
+                    notification.remove();
+                });
+                
+                // Hapus notifikasi setelah 10 detik
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 10000);
+            }
+            
+            // Menggunakan Intersection Observer untuk mendeteksi ketika video section masuk viewport
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.3 // 30% dari section terlihat
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Ketika video section terlihat, coba putar video
+                        playVideoWithSound();
+                        
+                        // Hentikan observasi setelah video diputar
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Mulai mengamati video section
+            observer.observe(videoSection);
+            
+            // Fallback untuk browser yang tidak mendukung Intersection Observer
+            window.addEventListener('scroll', () => {
+                const rect = videoSection.getBoundingClientRect();
+                const isVisible = (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+                
+                if (isVisible && !videoPlayed) {
+                    playVideoWithSound();
+                }
+            });
+            
+            // Video Controls Functionality
+            // Update progress bar saat video berjalan
+            video.addEventListener('timeupdate', () => {
+                const value = (100 / video.duration) * video.currentTime;
+                document.getElementById('video-progress-bar').value = value;
+            });
+            
+            // Play/Pause dengan tombol kontrol
+            playPauseBtn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playButton.style.display = 'none';
+                } else {
+                    video.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playButton.style.display = 'flex';
+                }
+            });
+            
+            // Play/Pause dengan overlay play button
+            playButton.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playButton.style.display = 'none';
+                } else {
+                    video.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    playButton.style.display = 'flex';
+                }
+            });
+            
+            // Seek video dengan progress bar
+            document.getElementById('video-progress-bar').addEventListener('input', () => {
+                const time = video.duration * (document.getElementById('video-progress-bar').value / 100);
+                video.currentTime = time;
+            });
+            
+            // Atur volume
+            document.getElementById('volumeBar').addEventListener('input', () => {
+                video.volume = document.getElementById('volumeBar').value / 100;
+                if (video.volume > 0) {
+                    video.muted = false;
+                    document.getElementById('muteBtn').innerHTML = '<i class="fas fa-volume-up"></i>';
+                } else {
+                    video.muted = true;
+                    document.getElementById('muteBtn').innerHTML = '<i class="fas fa-volume-mute"></i>';
+                }
+            });
+            
+            // Mute/Unmute
+            document.getElementById('muteBtn').addEventListener('click', () => {
+                if (video.muted) {
+                    video.muted = false;
+                    document.getElementById('muteBtn').innerHTML = '<i class="fas fa-volume-up"></i>';
+                    document.getElementById('volumeBar').value = video.volume * 100;
+                } else {
+                    video.muted = true;
+                    document.getElementById('muteBtn').innerHTML = '<i class="fas fa-volume-mute"></i>';
+                }
+            });
+            
+            // Fullscreen
+            document.getElementById('fullscreenBtn').addEventListener('click', () => {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) { /* Safari */
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) { /* IE11 */
+                    video.msRequestFullscreen();
+                }
+            });
+            
+            // Sembunyikan overlay play button saat video dimainkan
+            video.addEventListener('play', () => {
+                playButton.style.display = 'none';
+            });
+            
+            // Tampilkan overlay play button saat video dijeda
+            video.addEventListener('pause', () => {
+                if (!video.ended) {
+                    playButton.style.display = 'flex';
+                }
+            });
+        });
+        
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const darkModeIcon = darkModeToggle.querySelector('i');
+        
+        // Check for saved dark mode preference
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            darkModeIcon.classList.remove('fa-moon');
+            darkModeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkModeActive = body.classList.contains('dark-mode');
+            
+            // Update icon
+            if (isDarkModeActive) {
+                darkModeIcon.classList.remove('fa-moon');
+                darkModeIcon.classList.add('fa-sun');
+            } else {
+                darkModeIcon.classList.remove('fa-sun');
+                darkModeIcon.classList.add('fa-moon');
+            }
+            
+            // Save preference
+            localStorage.setItem('darkMode', isDarkModeActive);
+        });
+        
+        // Scroll Progress Indicator
+        const scrollProgressBar = document.querySelector('.progress-bar');
+        
+        window.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPosition = window.scrollY;
+            const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+            
+            scrollProgressBar.style.width = `${scrollPercentage}%`;
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Scroll Down Button
+        const scrollDownBtn = document.querySelector('.scroll-down');
+        
+        scrollDownBtn.addEventListener('click', () => {
+            const profileSection = document.getElementById('profile');
+            
+            window.scrollTo({
+                top: profileSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Hobby Progress Animation
+        const hobbyProgressBars = document.querySelectorAll('.hobby-progress');
+        
+        // Function to check if element is in viewport
+        const isInViewport = (element) => {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        };
+        
+        // Animate hobby progress bars when in viewport
+        const animateHobbyProgress = () => {
+            hobbyProgressBars.forEach(bar => {
+                if (isInViewport(bar) && bar.style.width === '') {
+                    const level = bar.getAttribute('data-level');
+                    bar.style.width = `${level}%`;
+                }
+            });
+        };
+        
+        // Initial check and add scroll event listener
+        animateHobbyProgress();
+        window.addEventListener('scroll', animateHobbyProgress);
+        
+        // Major Cards Animation
+        const majorCards = document.querySelectorAll('.major-card');
+        
+        // Function to check if element is in viewport with offset
+        const isInViewportWithOffset = (element, offset = 100) => {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + offset &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        };
+        
+        // Animate major cards when in viewport
+        const animateMajorCards = () => {
+            majorCards.forEach((card, index) => {
+                if (isInViewportWithOffset(card) && !card.classList.contains('animate-in')) {
+                    setTimeout(() => {
+                        card.classList.add('animate-in');
+                    }, index * 200); // Stagger animation
+                }
+            });
+        };
+        
+        // Initial check and add scroll event listener
+        animateMajorCards();
+        window.addEventListener('scroll', animateMajorCards);
+        
+        // FTP Link - Updated functionality
+        const ftpLink = document.getElementById('ftp-link');
+        
+        ftpLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Buka alamat FTP di tab baru
+            window.open('ftp://192.168.1.5', '_blank');
+        });
+        
+        // Popup Functionality
+        const tkjInfoBtn = document.getElementById('tkj-info-btn');
+        const tkjPopup = document.getElementById('tkj-popup');
+        const closePopup = document.getElementById('close-popup');
+        
+        // Open popup
+        tkjInfoBtn.addEventListener('click', () => {
+            tkjPopup.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+        });
+        
+        // Close popup
+        closePopup.addEventListener('click', () => {
+            tkjPopup.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+        
+        // Close popup when clicking outside the popup content
+        tkjPopup.addEventListener('click', (e) => {
+            if (e.target === tkjPopup) {
+                tkjPopup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && tkjPopup.classList.contains('active')) {
+                tkjPopup.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+       // Image Popup Functionality
+const imageContainers = document.querySelectorAll('.info-right');
+const infoHints = document.querySelectorAll('.info-hint');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const imagePopup = document.getElementById('image-popup');
+const imagePopupImage = imagePopup.querySelector('.image-popup-image');
+const imagePopupTitle = imagePopup.querySelector('.image-popup-text h3');
+const imagePopupDescription = imagePopup.querySelector('.image-popup-text p');
+const closeImagePopup = document.querySelector('.close-image-popup');
+
+// Modifikasi fungsi openImagePopup
+const openImagePopup = (container) => {
+    let image, title, description, address;
+    
+    if (container.classList.contains('gallery-item')) {
+        // For gallery items
+        image = container.querySelector('img');
+        title = container.getAttribute('data-title');
+        description = container.getAttribute('data-description');
+    } else {
+        // For info-right containers
+        image = container.querySelector('.info-image');
+        title = container.getAttribute('data-title');
+        description = container.getAttribute('data-description');
+        address = container.getAttribute('data-address');
+    }
+    
+    // Set popup content
+    imagePopupImage.src = image.src;
+    imagePopupImage.alt = image.alt;
+    imagePopupTitle.textContent = title;
+    
+    // Hapus konten lama
+    imagePopupDescription.innerHTML = '';
+    
+    // Tambahkan paragraf deskripsi
+    const descParagraph = document.createElement('p');
+    descParagraph.textContent = description;
+    imagePopupDescription.appendChild(descParagraph);
+    
+    // Jika ada alamat, tambahkan sebagai paragraf terpisah dengan teks bold
+    if (address) {
+        // Buat elemen paragraf untuk alamat
+        const addressParagraph = document.createElement('p');
+        
+        // Buat elemen strong untuk teks bold
+        const boldText = document.createElement('strong');
+        boldText.textContent = address;
+        
+        // Tambahkan elemen strong ke paragraf
+        addressParagraph.appendChild(boldText);
+        
+        // Tambahkan paragraf ke deskripsi popup
+        imagePopupDescription.appendChild(addressParagraph);
+    }
+    
+    // Show popup
+    imagePopup.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+};
+
+// Add click event to image containers
+imageContainers.forEach(container => {
+    container.addEventListener('click', () => {
+        openImagePopup(container);
+    });
+});
+
+// Add click event to info hints
+infoHints.forEach(hint => {
+    hint.addEventListener('click', (e) => {
+        e.preventDefault();
+        const container = hint.closest('.info-layout').querySelector('.info-right');
+        openImagePopup(container);
+    });
+});
+
+// Add click event to gallery items
+galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+        openImagePopup(item);
+    });
+});
+
+// Close image popup
+closeImagePopup.addEventListener('click', () => {
+    imagePopup.classList.remove('active');
+    document.body.style.overflow = ''; // Re-enable scrolling
+});
+
+// Close image popup when clicking outside the popup content
+imagePopup.addEventListener('click', (e) => {
+    if (e.target === imagePopup) {
+        imagePopup.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close image popup with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imagePopup.classList.contains('active')) {
+        imagePopup.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+        
+        // Gallery Auto Scroll Functionality - TANPA MEMAKSA KEMBALI KE GALERI
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryContainer = document.getElementById('gallery-container');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const gallerySection = document.querySelector('.gallery-section');
+            
+            let autoScrollInterval;
+            let currentIndex = 0;
+            let isAutoScrolling = false;
+            let scrollTimeout;
+            let userInteracted = false;
+            let isTransitioning = false;
+            let lastInteractionTime = 0;
+            let isGalleryVisible = false;
+            
+            // Fungsi untuk mendapatkan item yang paling dekat dengan tengah viewport
+            function getCenterItem() {
+                const containerRect = galleryContainer.getBoundingClientRect();
+                const containerCenter = containerRect.left + containerRect.width / 2;
+                
+                let closestItem = null;
+                let closestDistance = Infinity;
+                
+                galleryItems.forEach((item, index) => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenter = itemRect.left + itemRect.width / 2;
+                    const distance = Math.abs(containerCenter - itemCenter);
+                    
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        closestItem = item;
+                        currentIndex = index;
+                    }
+                });
+                
+                return closestItem;
+            }
+            
+            // Fungsi untuk scroll ke item tertentu dengan animasi halus
+            function scrollToItem(index) {
+                if (isTransitioning) return;
+                
+                isTransitioning = true;
+                currentIndex = index;
+                
+                // Hapus kelas active dari semua item
+                galleryItems.forEach(item => item.classList.remove('active'));
+                
+                // Tambahkan kelas active ke item yang dipilih
+                galleryItems[index].classList.add('active');
+                
+                // Scroll ke item dengan animasi smooth HANYA DI DALAM KONTAINER GALERI
+                galleryItems[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+                
+                // Reset flag transisi setelah animasi selesai
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 800);
+            }
+            
+            // Fungsi untuk auto scroll ke kanan
+            function startAutoScroll() {
+                if (isAutoScrolling || !isGalleryVisible) return;
+                
+                isAutoScrolling = true;
+                
+                autoScrollInterval = setInterval(() => {
+                    // Periksa apakah galeri masih terlihat dan tidak ada interaksi pengguna
+                    if (!isGalleryVisible || userInteracted) {
+                        stopAutoScroll();
+                        return;
+                    }
+                    
+                    // Pindah ke item berikutnya
+                    const nextIndex = (currentIndex + 1) % galleryItems.length;
+                    scrollToItem(nextIndex);
+                }, 3500);
+            }
+            
+            // Fungsi untuk stop auto scroll
+            function stopAutoScroll() {
+                if (!isAutoScrolling) return;
+                
+                isAutoScrolling = false;
+                clearInterval(autoScrollInterval);
+                clearTimeout(scrollTimeout);
+            }
+            
+            // Intersection Observer untuk mendeteksi visibilitas galeri
+            const galleryObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isGalleryVisible = entry.isIntersecting;
+                    
+                    if (isGalleryVisible) {
+                        // Galeri terlihat, mulai auto scroll setelah 2 detik
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => {
+                            if (isGalleryVisible && !userInteracted) {
+                                startAutoScroll();
+                            }
+                        }, 2000);
+                    } else {
+                        // Galeri tidak terlihat, hentikan auto scroll
+                        stopAutoScroll();
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            galleryObserver.observe(gallerySection);
+            
+            // Hentikan auto scroll saat pengguna berinteraksi dengan galeri
+            galleryContainer.addEventListener('wheel', (e) => {
+                // Hanya hentikan auto scroll jika scroll horizontal
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                    userInteracted = true;
+                    lastInteractionTime = Date.now();
+                    stopAutoScroll();
+                    
+                    // Update currentIndex
+                    getCenterItem();
+                    
+                    // Reset user interacted flag setelah 8 detik
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        userInteracted = false;
+                        // Hanya mulai kembali jika galeri masih terlihat
+                        if (isGalleryVisible) {
+                            startAutoScroll();
+                        }
+                    }, 8000);
+                }
+            });
+            
+            galleryContainer.addEventListener('touchstart', () => {
+                userInteracted = true;
+                lastInteractionTime = Date.now();
+                stopAutoScroll();
+                
+                // Reset user interacted flag setelah 8 detik
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    userInteracted = false;
+                    // Hanya mulai kembali jika galeri masih terlihat
+                    if (isGalleryVisible) {
+                        startAutoScroll();
+                    }
+                }, 8000);
+            });
+            
+            // Update currentIndex saat touch end
+            galleryContainer.addEventListener('touchend', () => {
+                getCenterItem();
+            });
+            
+            // Navigasi dengan tombol keyboard - HANYA JIKA GALERI TERLIHAT
+            document.addEventListener('keydown', (e) => {
+                if (!isGalleryVisible) return;
+                
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    e.preventDefault(); // Mencegah scroll halaman
+                    
+                    userInteracted = true;
+                    lastInteractionTime = Date.now();
+                    stopAutoScroll();
+                    
+                    if (e.key === 'ArrowLeft') {
+                        const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                        scrollToItem(prevIndex);
+                    } else {
+                        const nextIndex = (currentIndex + 1) % galleryItems.length;
+                        scrollToItem(nextIndex);
+                    }
+                    
+                    // Reset user interacted flag setelah 8 detik
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        userInteracted = false;
+                        // Hanya mulai kembali jika galeri masih terlihat
+                        if (isGalleryVisible) {
+                            startAutoScroll();
+                        }
+                    }, 8000);
+                }
+            });
+            
+            // Animasi saat masuk viewport
+            const itemObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        galleryItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.style.opacity = '0';
+                                item.style.transform = 'scale(0.95) translateY(5px)';
+                                item.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                                
+                                void item.offsetWidth;
+                                
+                                item.style.opacity = '0.85';
+                                item.style.transform = 'scale(0.95) translateY(5px)';
+                            }, index * 100);
+                        });
+                        
+                        itemObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            itemObserver.observe(galleryContainer);
+            
+            // Inisialisasi - set item pertama sebagai active
+            if (galleryItems.length > 0) {
+                galleryItems[0].classList.add('active');
+            }
+        });
+        
+        // Scroll Reveal Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elemen yang akan dianimasikan saat scroll
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            
+            // Timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            // Fungsi untuk mengecek apakah elemen terlihat di viewport
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                    rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // Fungsi untuk menambahkan kelas active ke elemen yang terlihat
+            function revealOnScroll() {
+                // Handle reveal elements
+                revealElements.forEach(element => {
+                    if (isElementInViewport(element) && !element.classList.contains('active')) {
+                        element.classList.add('active');
+                    }
+                });
+                
+                // Handle timeline items
+                timelineItems.forEach((item, index) => {
+                    if (isElementInViewport(item) && !item.classList.contains('active')) {
+                        setTimeout(() => {
+                            item.classList.add('active');
+                        }, index * 200); // Stagger animation
+                    }
+                });
+            }
+            
+            // Jalankan fungsi saat halaman dimuat
+            revealOnScroll();
+            
+            // Jalankan fungsi saat scroll
+            window.addEventListener('scroll', revealOnScroll);
+            
+            // Jalankan fungsi saat resize
+            window.addEventListener('resize', revealOnScroll);
+        });
+        
+        // Tic Tac Toe Game
+        document.addEventListener('DOMContentLoaded', function() {
+            const board = document.getElementById('tic-tac-toe-board');
+            const cells = document.querySelectorAll('.tic-tac-toe-cell');
+            const status = document.getElementById('tic-tac-toe-status');
+            const resetButton = document.getElementById('tic-tac-toe-reset');
+            
+            let currentPlayer = 'X';
+            let gameActive = true;
+            let gameState = ['', '', '', '', '', '', '', '', '', '', '', ''];
+            
+            const winningConditions = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+            
+            function handleCellClick(e) {
+                const cell = e.target;
+                const index = parseInt(cell.getAttribute('data-index'));
+                
+                if (gameState[index] !== '' || !gameActive) {
+                    return;
+                }
+                
+                gameState[index] = currentPlayer;
+                cell.textContent = currentPlayer;
+                cell.classList.add(currentPlayer.toLowerCase());
+                
+                checkResult();
+            }
+            
+            function checkResult() {
+                let roundWon = false;
+                
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const [a, b, c] = winningConditions[i];
+                    
+                    if (gameState[a] === '' || gameState[b] === '' || gameState[c] === '') {
+                        continue;
+                    }
+                    
+                    if (gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
+                        roundWon = true;
+                        break;
+                    }
+                }
+                
+                if (roundWon) {
+                    status.textContent = `Pemain ${currentPlayer} menang!`;
+                    gameActive = false;
+                    showNotification(`Pemain ${currentPlayer} menang!`, 'success');
+                    return;
+                }
+                
+                const roundDraw = !gameState.includes('');
+                if (roundDraw) {
+                    status.textContent = 'Hasil seri!';
+                    gameActive = false;
+                    showNotification('Hasil seri!', 'info');
+                    return;
+                }
+                
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                status.textContent = `Giliran: ${currentPlayer}`;
+            }
+            
+            function resetGame() {
+                currentPlayer = 'X';
+                gameActive = true;
+                gameState = ['', '', '', '', '', '', '', '', '', ''];
+                status.textContent = `Giliran: ${currentPlayer}`;
+                
+                cells.forEach(cell => {
+                    cell.textContent = '';
+                    cell.classList.remove('x', 'o');
+                });
+            }
+            
+            cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+            resetButton.addEventListener('click', resetGame);
+        });
+        
+        // Memory Card Game - PERBAIKAN
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameBoard = document.getElementById('memory-game-board');
+            const movesDisplay = document.getElementById('memory-moves');
+            const matchesDisplay = document.getElementById('memory-matches');
+            const resetButton = document.getElementById('memory-reset');
+            
+            const cardSymbols = ['🍎', '🍌', '🍇', '🍊', '🍓', '🍒', '🍑', '🥭'];
+            let cards = [...cardSymbols, ...cardSymbols];
+            let flippedCards = [];
+            let moves = 0;
+            let matches = 0;
+            let gameActive = true;
+            
+            // Shuffle cards
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+            
+            // Create card elements
+            function createCards() {
+                gameBoard.innerHTML = '';
+                const shuffledCards = shuffle(cards);
+                
+                shuffledCards.forEach((symbol, index) => {
+                    const card = document.createElement('div');
+                    card.classList.add('memory-card');
+                    card.dataset.symbol = symbol;
+                    card.dataset.index = index;
+                    
+                    const cardFront = document.createElement('div');
+                    cardFront.classList.add('memory-card-front');
+                    cardFront.textContent = symbol;
+                    
+                    const cardBack = document.createElement('div');
+                    cardBack.classList.add('memory-card-back');
+                    cardBack.innerHTML = '<i class="fas fa-question"></i>';
+                    
+                    card.appendChild(cardFront);
+                    card.appendChild(cardBack);
+                    
+                    card.addEventListener('click', flipCard);
+                    
+                    gameBoard.appendChild(card);
+                });
+            }
+            
+            function flipCard() {
+                if (!gameActive || flippedCards.length >= 2 || this.classList.contains('flip') || flippedCards.includes(this)) {
+                    return;
+                }
+                
+                this.classList.add('flip');
+                flippedCards.push(this);
+                
+                if (flippedCards.length === 2) {
+                    moves++;
+                    movesDisplay.textContent = moves;
+                    checkMatch();
+                }
+            }
+            
+            function checkMatch() {
+                const [card1, card2] = flippedCards;
+                const match = card1.dataset.symbol === card2.dataset.symbol;
+                
+                if (match) {
+                    matches++;
+                    matchesDisplay.textContent = matches;
+                    flippedCards = [];
+                    
+                    if (matches === cardSymbols.length) {
+                        gameActive = false;
+                        setTimeout(() => {
+                            showNotification(`Selamat! Anda menyelesaikan game dalam ${moves} langkah!`, 'success');
+                        }, 500);
+                    }
+                } else {
+                    gameActive = false;
+                    setTimeout(() => {
+                        card1.classList.remove('flip');
+                        card2.classList.remove('flip');
+                        flippedCards = [];
+                        gameActive = true;
+                    }, 1000);
+                }
+            }
+            
+            function resetGame() {
+                flippedCards = [];
+                moves = 0;
+                matches = 0;
+                gameActive = true;
+                movesDisplay.textContent = moves;
+                matchesDisplay.textContent = matches;
+                createCards();
+            }
+            
+            // Initialize game
+            createCards();
+            resetButton.addEventListener('click', resetGame);
+        });
+        
+        // Word Guessing Game
+        document.addEventListener('DOMContentLoaded', function() {
+            const wordDisplay = document.getElementById('word-display');
+            const wordInput = document.getElementById('word-input');
+            const guessButton = document.getElementById('word-guess-btn');
+            const resetButton = document.getElementById('word-reset');
+            const hintDisplay = document.getElementById('word-hint');
+            const attemptsDisplay = document.getElementById('word-attempts');
+            const categoryDisplay = document.getElementById('word-category');
+            
+            const words = [
+                { word: 'WHATSAPP', category: 'Teknologi', hint: 'Aplikasi chatting paling populer di Indonesia buat kirim pesan, foto, dan video' },
+                { word: 'JARINGAN', category: 'Teknologi', hint: 'Kumpulan komputer yang terhubung' },
+                { word: 'INTERNET', category: 'Teknologi', hint: 'Jaringan global yang menghubungkan komputer' },
+                { word: 'SOFTWARE', category: 'Teknologi', hint: 'Program komputer yang menjalankan sistem' },
+                { word: 'HARDWARE', category: 'Teknologi', hint: 'Komponen fisik komputer' },
+                { word: 'PROGRAM', category: 'Teknologi', hint: 'Seri instruksi untuk komputer' },
+                { word: 'DATABASE', category: 'Teknologi', hint: 'Kumpulan data terstruktur' },
+                { word: 'VR', category: 'Teknologi', hint: 'Teknologi terbaru yang bikin kamu bisa lihat dunia virtual dengan kacamata khusus' },
+                { word: 'FLASHDISK', category: 'Teknologi', hint: 'Alat kecil yang sering diselipkan ke laptop/PC buat mindahin data'},
+                { word: 'PROCESOR', category: 'Teknologi', hint: 'Otak HP atau komputer disebut'},
+
+            ];
+            
+            let currentWord = {};
+            let guessedLetters = [];
+            let attempts = [];
+            
+            function selectRandomWord() {
+                const randomIndex = Math.floor(Math.random() * words.length);
+                currentWord = words[randomIndex];
+                guessedLetters = [];
+                attempts = [];
+                updateDisplay();
+                categoryDisplay.textContent = `Kategori: ${currentWord.category}`;
+                hintDisplay.textContent = `Hint: ${currentWord.hint}`;
+                attemptsDisplay.innerHTML = '';
+                wordInput.value = '';
+            }
+            
+            function updateDisplay() {
+                let displayWord = '';
+                
+                for (let i = 0; i < currentWord.word.length; i++) {
+                    if (guessedLetters.includes(currentWord.word[i])) {
+                        displayWord += currentWord.word[i] + ' ';
+                    } else {
+                        displayWord += '_ ';
+                    }
+                }
+                
+                wordDisplay.textContent = displayWord.trim();
+            }
+            
+            function makeGuess() {
+                const guess = wordInput.value.toUpperCase().trim();
+                
+                if (!guess) {
+                    showNotification('Silakan masukkan tebakan Anda!', 'error');
+                    return;
+                }
+                
+                if (guess === currentWord.word) {
+                    wordDisplay.textContent = currentWord.word;
+                    showNotification('Selamat! Tebakan Anda benar!', 'success');
+                    setTimeout(() => {
+                        selectRandomWord();
+                    }, 2000);
+                } else {
+                    attempts.push(guess);
+                    const attemptElement = document.createElement('span');
+                    attemptElement.classList.add('word-attempt');
+                    attemptElement.textContent = guess;
+                    attemptsDisplay.appendChild(attemptElement);
+                    showNotification('Tebakan salah! Coba lagi.', 'error');
+                }
+                
+                wordInput.value = '';
+            }
+            
+            // Initialize game
+            selectRandomWord();
+            guessButton.addEventListener('click', makeGuess);
+            resetButton.addEventListener('click', selectRandomWord);
+            
+            // Allow Enter key to submit guess
+            wordInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    makeGuess();
+                }
+            });
+        });
+        
+        // Typing Speed Test - Perbaikan
+        document.addEventListener('DOMContentLoaded', function() {
+            const typingText = document.getElementById('typing-text');
+            const typingInput = document.getElementById('typing-input');
+            const wpmDisplay = document.getElementById('typing-wpm');
+            const accuracyDisplay = document.getElementById('typing-accuracy');
+            const charactersDisplay = document.getElementById('typing-characters');
+            const timerDisplay = document.getElementById('typing-timer');
+            const progressBar = document.getElementById('typing-progress-bar');
+            const startButton = document.getElementById('typing-start-btn');
+            const resetButton = document.getElementById('typing-reset-btn');
+            const resultsDiv = document.getElementById('typing-results');
+            const errorsDiv = document.getElementById('typing-errors');
+            const resultTextDiv = document.getElementById('typing-result-text');
+            
+            // Teks-teks untuk tes mengetik
+            const texts = [
+                "Teknologi informasi telah menjadi bagian integral dari kehidupan modern. Dari smartphone hingga komputer canggih, teknologi terus berkembang pesat. Sebagai siswa jurusan TKJ, saya belajar tentang jaringan komputer, perakitan, dan troubleshooting.",
+                "Dalam era digital saat ini, kemampuan dalam bidang teknologi informasi sangat penting. Siswa SMK khususnya jurusan TKJ dibekali dengan berbagai keterampilan teknis yang dibutuhkan di dunia industri.",
+                "Pembelajaran di jurusan Teknik Komputer Jaringan tidak hanya teori tetapi juga praktik langsung. Siswa diajarkan untuk merakit komputer, menginstal sistem operasi, dan mengelola jaringan.",
+                "Internet telah mengubah cara kita berkomunikasi, belajar, dan bekerja. Sebagai generasi muda, kita harus memanfaatkan teknologi ini dengan bijak untuk pengembangan diri.",
+                "Komputer jaringan adalah sistem yang menghubungkan beberapa komputer untuk berbagi sumber daya dan informasi. Pemahaman tentang konsep ini sangat penting di era digital."
+            ];
+            
+            let currentTextIndex = 0;
+            let textToType = texts[currentTextIndex];
+            let startTime;
+            let timeLeft = 60;
+            let timerInterval;
+            let progressInterval;
+            let errors = [];
+            let testActive = false;
+            let testCompleted = false;
+            
+            // Initialize
+            function initTest() {
+                typingText.textContent = textToType;
+                typingInput.value = '';
+                typingInput.disabled = true;
+                startButton.disabled = false;
+                resetButton.disabled = true;
+                timerDisplay.textContent = '60';
+                progressBar.style.width = '0%';
+                wpmDisplay.textContent = '0';
+                accuracyDisplay.textContent = '100%';
+                charactersDisplay.textContent = '0';
+                resultsDiv.style.display = 'none';
+                errorsDiv.innerHTML = '';
+                resultTextDiv.style.display = 'none';
+                errors = [];
+                testActive = false;
+                testCompleted = false;
+            }
+            
+            // Start test
+            function startTest() {
+                if (testActive) return;
+                
+                testActive = true;
+                testCompleted = false;
+                startTime = new Date();
+                timeLeft = 60;
+                errors = [];
+                
+                typingInput.disabled = false;
+                typingInput.focus();
+                startButton.disabled = true;
+                resetButton.disabled = false;
+                resultsDiv.style.display = 'none';
+                errorsDiv.innerHTML = '';
+                resultTextDiv.style.display = 'none';
+                
+                // Start timer
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    timerDisplay.textContent = timeLeft;
+                    
+                    // Update progress bar
+                    const progress = ((60 - timeLeft) / 60) * 100;
+                    progressBar.style.width = progress + '%';
+                    
+                    if (timeLeft <= 0) {
+                        endTest();
+                    }
+                }, 1000);
+                
+                // Start progress bar animation
+                progressInterval = setInterval(() => {
+                    if (testActive) {
+                        const elapsed = (new Date() - startTime) / 1000;
+                        const progress = (elapsed / 60) * 100;
+                        progressBar.style.width = Math.min(progress, 100) + '%';
+                    }
+                }, 100);
+            }
+            
+            // Update stats during typing
+            function updateStats() {
+                if (!testActive || testCompleted) return;
+                
+                const currentTime = new Date();
+                const timeElapsed = (currentTime - startTime) / 1000 / 60; // in minutes
+                
+                // Calculate words per minute
+                const wordsTyped = typingInput.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+                const wpm = Math.round(wordsTyped / timeElapsed) || 0;
+                
+                // Calculate accuracy and find errors
+                let correctChars = 0;
+                errors = [];
+                
+                // Create colored text
+                let coloredText = '';
+                for (let i = 0; i < textToType.length; i++) {
+                    if (i < typingInput.value.length) {
+                        if (typingInput.value[i] === textToType[i]) {
+                            coloredText += `<span class="char-correct">${textToType[i]}</span>`;
+                            correctChars++;
+                        } else {
+                            coloredText += `<span class="char-incorrect">${textToType[i]}</span>`;
+                            errors.push({
+                                position: i,
+                                expected: textToType[i],
+                                typed: typingInput.value[i] || '(kosong)'
+                            });
+                        }
+                    } else {
+                        coloredText += `<span class="char-missing">${textToType[i]}</span>`;
+                        errors.push({
+                            position: i,
+                            expected: textToType[i],
+                            typed: '(kosong)'
+                        });
+                    }
+                }
+                
+                // Display colored text
+                resultTextDiv.innerHTML = coloredText;
+                resultTextDiv.style.display = 'block';
+                
+                const accuracy = typingInput.value.length > 0 
+                    ? Math.round((correctChars / Math.max(typingInput.value.length, textToType.length)) * 100) 
+                    : 100;
+                
+                // Update displays
+                wpmDisplay.textContent = wpm;
+                accuracyDisplay.textContent = accuracy + '%';
+                charactersDisplay.textContent = typingInput.value.length;
+            }
+            
+            // End test and show results
+            function endTest() {
+                testActive = false;
+                testCompleted = true;
+                
+                clearInterval(timerInterval);
+                clearInterval(progressInterval);
+                
+                typingInput.disabled = true;
+                startButton.disabled = false;
+                
+                // Final stats calculation
+                const endTime = new Date();
+                const timeElapsed = (endTime - startTime) / 1000 / 60; // in minutes
+                
+                const wordsTyped = typingInput.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+                const wpm = Math.round(wordsTyped / timeElapsed) || 0;
+                
+                let correctChars = 0;
+                let coloredText = '';
+                
+                for (let i = 0; i < textToType.length; i++) {
+                    if (i < typingInput.value.length) {
+                        if (typingInput.value[i] === textToType[i]) {
+                            coloredText += `<span class="char-correct">${textToType[i]}</span>`;
+                            correctChars++;
+                        } else {
+                            coloredText += `<span class="char-incorrect">${textToType[i]}</span>`;
+                        }
+                    } else {
+                        coloredText += `<span class="char-missing">${textToType[i]}</span>`;
+                    }
+                }
+                
+                const accuracy = typingInput.value.length > 0 
+                    ? Math.round((correctChars / Math.max(typingInput.value.length, textToType.length)) * 100) 
+                    : 100;
+                
+                // Update final displays
+                wpmDisplay.textContent = wpm;
+                accuracyDisplay.textContent = accuracy + '%';
+                
+                // Show results
+                resultsDiv.style.display = 'block';
+                errorsDiv.innerHTML = '';
+                
+                // Display colored text
+                resultTextDiv.innerHTML = coloredText;
+                resultTextDiv.style.display = 'block';
+                
+                // Show notification
+                if (accuracy >= 95) {
+                    showNotification(`Hebat! WPM: ${wpm}, Akurasi: ${accuracy}%`, 'success');
+                } else if (accuracy >= 80) {
+                    showNotification(`Bagus! WPM: ${wpm}, Akurasi: ${accuracy}%`, 'info');
+                } else {
+                    showNotification(`WPM: ${wpm}, Akurasi: ${accuracy}%. Terus berlatih!`, 'error');
+                }
+            }
+            
+            // Reset test with new text
+            function resetTest() {
+                clearInterval(timerInterval);
+                clearInterval(progressInterval);
+                
+                // Move to next text
+                currentTextIndex = (currentTextIndex + 1) % texts.length;
+                textToType = texts[currentTextIndex];
+                
+                // Reinitialize
+                initTest();
+            }
+            
+            // Event listeners
+            startButton.addEventListener('click', startTest);
+            resetButton.addEventListener('click', resetTest);
+            
+            typingInput.addEventListener('input', updateStats);
+            
+            // Prevent pasting
+            typingInput.addEventListener('paste', (e) => {
+                e.preventDefault();
+                showNotification('Mengetik manual diperlukan untuk tes ini!', 'error');
+            });
+            
+            // Initialize on load
+            initTest();
+        });
+        
+        // Floating Action Button
+        document.addEventListener('DOMContentLoaded', function() {
+            const fabToggle = document.getElementById('fab-toggle');
+            const fabOptions = document.getElementById('fab-options');
+            const fabTop = document.getElementById('fab-top');
+            const fabTheme = document.getElementById('fab-theme');
+            const fabShare = document.getElementById('fab-share');
+            const fabIcon = fabToggle.querySelector('i');
+            
+            // Toggle FAB options
+            fabToggle.addEventListener('click', () => {
+                fabOptions.classList.toggle('active');
+                
+                if (fabOptions.classList.contains('active')) {
+                    fabIcon.classList.remove('fa-plus');
+                    fabIcon.classList.add('fa-times');
+                } else {
+                    fabIcon.classList.remove('fa-times');
+                    fabIcon.classList.add('fa-plus');
+                }
+            });
+            
+            // Scroll to top
+            fabTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                fabOptions.classList.remove('active');
+                fabIcon.classList.remove('fa-times');
+                fabIcon.classList.add('fa-plus');
+            });
+            
+            // Toggle theme
+            fabTheme.addEventListener('click', () => {
+                document.getElementById('dark-mode-toggle').click();
+                
+                fabOptions.classList.remove('active');
+                fabIcon.classList.remove('fa-times');
+                fabIcon.classList.add('fa-plus');
+            });
+            
+            // Share functionality
+            fabShare.addEventListener('click', () => {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'My Portofolio',
+                        text: 'Lihat portofolio saya',
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    const dummy = document.createElement('input');
+                    document.body.appendChild(dummy);
+                    dummy.value = window.location.href;
+                    dummy.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(dummy);
+                    
+                    showNotification('Link telah disalin ke clipboard!', 'success');
+                }
+                
+                fabOptions.classList.remove('active');
+                fabIcon.classList.remove('fa-times');
+                fabIcon.classList.add('fa-plus');
+            });
+        });
+        
+        // Notification System
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            
+            // Set message
+            notification.textContent = message;
+            
+            // Set type
+            notification.className = 'notification';
+            notification.classList.add(type);
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
